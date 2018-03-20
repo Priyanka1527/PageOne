@@ -60,18 +60,20 @@ for filename in glob.glob('Preprocessed/*.txt'):
                     word_data[2] = term_freq;
                     term_data[pos] = word_data
                 else:
+                    posting_list = []
                     posting_item = []
                     posting_item.append(doc_no);
                     posting_item.append(1);
+                    posting_list.append(posting_item)
 
-                    node = [word, 1, 1, posting_item] # temp_tuple = (word, initial_doc_freq, term_freq, posting_list)
+                    node = [word, 1, 1, posting_list] # temp_tuple = (word, initial_doc_freq, term_freq, posting_list)
 
                     term.append(word) 
                     term_data.append(node);
 
         #print('\n\nUnsorted Posting List:');
         #print(*term_data, sep='\n')
-    posting_list = sorted(term_data, key = lambda x: x[0])
-    print('\n\nSorted Posting List:');
-    print(*posting_list, sep='\n')
+posting_list = sorted(term_data, key = lambda x: x[0])
+print('\n\nSorted Posting List:');
+print(*posting_list, sep='\n')
 
