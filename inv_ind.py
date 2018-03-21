@@ -3,7 +3,14 @@
 #check if the dictionary entry exists.
 #   - If it doesn't, create an entry. Insert ascending
 #   - If it does, increment the term frequency in the tuple of that term.
+
 import glob
+import os, os.path
+import math
+
+total_docs=0
+for filename in glob.glob('Preprocessed/*.txt'):
+    total_docs = total_docs+1
 
 term = []
 term_data = []
@@ -12,11 +19,9 @@ term_data = []
 doc_no = 0;
 #for filename in glob.glob('Test_Preprocessed/*.txt'):
 for filename in glob.glob('Preprocessed/*.txt'):
-    print(filename)
     with open(filename,'r') as f:
 
         doc_no = doc_no+1;
-        print(doc_no)
 
         #Reading the file word by word
         for line in f:
@@ -63,7 +68,47 @@ for filename in glob.glob('Preprocessed/*.txt'):
 
         #print('\n\nUnsorted Posting List:');
         #print(*term_data, sep='\n')
-posting_list = sorted(term_data, key = lambda x: x[0])
-print('\n\nSorted Posting List:');
-print(*posting_list, sep='\n')
+dict_posting_list = sorted(term_data, key = lambda x: x[0])
+#print(*dict_posting_list, sep='\n')
 
+
+idf_table = []
+
+for node in dict_posting_list:
+    if(type(node) is list):
+
+        df = node[1];
+        frac = total_docs/df
+        idf = math.log10(frac)
+
+        idf_table_row = []
+        idf_table_row.append(node[0])
+        idf_table_row.append(idf)
+
+        weight_table = []
+        for x in range(1, (total_docs+1)):
+            weight_table.append(0)
+
+        posting_list = node[3]
+        
+        #print(node[0])
+        for i in range(0, len(posting_list)):
+            posting_list_element = posting_list[i]
+            #print(posting_list_element)
+            pos = posting_list_element[0]
+            #print(pos)
+            weight_table[pos-1] = 1
+
+        idf_table_row.append(weight_table)
+
+        idf_table.append(idf_table_row)
+
+
+#print(*idf_table, sep='\n')
+for i in range(1, len(idf_table)):
+    print(dict_posting_list[i])
+    print(idf_table[i])
+    print('')
+
+    
+    
