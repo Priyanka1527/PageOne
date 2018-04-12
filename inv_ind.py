@@ -12,6 +12,8 @@ for filename in glob.glob(target_folder):
     total_docs = total_docs+1
 
 
+print('Creating the Dictionary')
+
 # *************************** CREATING THE DICTIONARY ***************************
 
 term = []
@@ -79,7 +81,10 @@ for filename in glob.glob(target_folder):
 
 # *************************** CREATING THE IDF TABLE ***************************
 
-dict_posting_list = sorted(term_data, key = lambda x: x[0])#Sorting term_data in ascending order according to the word
+print('Creating the IDF Table')
+
+#dict_posting_list = sorted(term_data, key = lambda x: x[0])#Sorting term_data in ascending order according to the word
+dict_posting_list = term_data
 idf_table = []
 
 for node in dict_posting_list:
@@ -115,6 +120,8 @@ for node in dict_posting_list:
 
 # *************************** CALCULATING DOCUMENT VECTORS ***************************
 
+print('Calculating Document Vectors')
+
 document_vectors = []
 for i in range(0, total_docs):
     document_vectors.append(0);
@@ -123,14 +130,47 @@ for node in idf_table:
     weight_table = node[2] #Getting the weight_table for each word
     for i in range(0, total_docs):
         weight_per_doc = weight_table[i];
-        document_vectors[i] = document_vectors[i]+weight_per_doc;
+        document_vectors[i] = document_vectors[i]+weight_per_doc*weight_per_doc;
 
-for i in range(1, len(document_vectors)):
-    print('Doc #'+repr(i)+': '+repr(document_vectors[i]))
+for i in range(0, len(document_vectors)):
+       vector = document_vectors[i]
+       vector = math.sqrt(vector)
+       document_vectors[i] = vector
 
+#for i in range(0, len(document_vectors)):
+#    print('Doc #'+repr(i)+': '+repr(document_vectors[i]))
+
+
+
+# *************************** CALCULATING NORMALIZED WEIGHTS ***************************
+
+print('Calculating Normalized Weights')
+
+normalized_idf_table = []
+
+for row in idf_table:
+    weight_table = row[2]
+    normalized_weight_table = []
+    for i in range(0, len(weight_table)):
+        doc_vector = document_vectors[i]
+        normalized_weight = weight_table[i]/document_vectors[i]
+        normalized_weight_table.append(normalized_weight)
+
+    normalized_row = []
+    normalized_row.append(row[0])
+    normalized_row.append(row[1])
+    normalized_row.append(normalized_weight_table)
+    normalized_idf_table.append(normalized_row)
+
+
+for i in range(0, len(normalized_idf_table)):
+    print(normalized_idf_table[i])
 #for i in range(1, len(idf_table)):
 #    print(idf_table[i])
 #    print('')
 
     
-    
+#NEXT STEPS
+#   Input a query
+#   Find in list, get idf, calculate the vector
+#   Calculate the similarity
