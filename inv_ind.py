@@ -4,14 +4,17 @@
 import glob
 import os, os.path
 import math
+import re
 
 #Getting the total number of docs
 total_docs=0
 target_folder = 'Preprocessed/*.txt'
+#target_folder = 'Test_Preprocessed/*.txt'
 for filename in glob.glob(target_folder):
     total_docs = total_docs+1
 
 
+print('Total # of Docs: ', repr(total_docs))
 print('Creating the Dictionary')
 
 # *************************** CREATING THE DICTIONARY ***************************
@@ -122,25 +125,24 @@ for node in dict_posting_list:
 
 print('Calculating Document Vectors')
 
+#Declaring and initializing the document_vectors list
 document_vectors = []
 for i in range(0, total_docs):
     document_vectors.append(0);
 
 for node in idf_table:
     weight_table = node[2] #Getting the weight_table for each word
+    #Getting the sum of squares of each weight 
     for i in range(0, total_docs):
         weight_per_doc = weight_table[i];
         document_vectors[i] = document_vectors[i]+weight_per_doc*weight_per_doc;
 
+#Calculating the square root of the sum of square of weights of each word
+# (Psst: Getting the length of the vector)
 for i in range(0, len(document_vectors)):
        vector = document_vectors[i]
        vector = math.sqrt(vector)
        document_vectors[i] = vector
-
-#for i in range(0, len(document_vectors)):
-#    print('Doc #'+repr(i)+': '+repr(document_vectors[i]))
-
-
 
 # *************************** CALCULATING NORMALIZED WEIGHTS ***************************
 
@@ -148,6 +150,7 @@ print('Calculating Normalized Weights')
 
 normalized_idf_table = []
 
+#Dividing the weights by the length of the document vector to get the normalized values
 for row in idf_table:
     weight_table = row[2]
     normalized_weight_table = []
@@ -162,15 +165,51 @@ for row in idf_table:
     normalized_row.append(normalized_weight_table)
     normalized_idf_table.append(normalized_row)
 
+# *************************** INPUTTING THE QUERY ***************************
 
-for i in range(0, len(normalized_idf_table)):
-    print(normalized_idf_table[i])
-#for i in range(1, len(idf_table)):
-#    print(idf_table[i])
-#    print('')
-
+query = input('Enter your search query:') #Accepting query from the user
     
+wordList = re.sub("[^\w]", " ",  query).split() #Saving each word as an element in the list
+
+# *************************** CALCULATING THE QUERY VECTOR ***************************
+
+#Calculating the query vector
+query_vector = []
+for node in idf_table:#length of query vector = length of the idf table
+    count = 0;
+    term = node[0]
+    term_idf = node[1]
+    query_vector_row = []
+    for i in range(0, len(wordList)):
+        query_term = wordList[i]
+        if(term == query_term):
+            count = count+1;
+    query_vector_row.append(term)
+    query_vector_row.append(count*term_idf)#idf
+    query_vector.append(query_vector_row)
+
+# *************************** CALCULATING THE NORMALIZED QUERY VECTOR ***************************
+
+#Calculating the sum of sqaures
+sum_of_squares = 0
+for node in query_vector:
+    idf = node[1]
+    sum_of_squares = sum_of_squares+idf*idf 
+
+#Getting the square root 
+vector_length = math.sqrt(sum_of_squares)
+
+#Normalizing
+query_vector_normalized = []
+for node in query_vector:
+    row = []
+    idf = node[1]
+    row.append(node[0])
+    row.append(idf/vector_length)
+    query_vector_normalized.append(row)
+
+for i in range(0, len(query_vector)):
+    print(query_vector_normalized[i])
+
 #NEXT STEPS
-#   Input a query
-#   Find in list, get idf, calculate the vector
 #   Calculate the similarity
