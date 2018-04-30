@@ -1,11 +1,14 @@
+#Author: Priyanka Saha
+#Last Updated: 4/29/2018
+
 import nltk
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
-from nltk.stem import LancasterStemmer
+from nltk.stem import PorterStemmer
 import os
 import codecs
 
-Lancast_Stem = LancasterStemmer()
+Port_Stem = PorterStemmer()
 
 def text_tokenizer(in_dir, out_dir, file_name):
     input_file = codecs.open(in_dir+"/"+file_name,'r',encoding = 'utf-8',errors = 'ignore')
@@ -21,16 +24,16 @@ def text_tokenizer(in_dir, out_dir, file_name):
     # stemming using Lancaster Stemmer in NLTK package
     stemmed_words = []
     for w in without_stopword:
-        stemmed_words.append(Lancast_Stem.stem(w))
+        stemmed_words.append(Port_Stem.stem(w))
 
     #print(stemmed_words)
     output_file = codecs.open(out_dir+"/"+file_name+".txt", "w",encoding = 'utf-8',errors = 'ignore')
     output_file.write(str(stemmed_words))
     output_file.close()
 
-for filename in os.listdir('Preprocessed/'):
+for filename in os.listdir('Preprocessed_test/'):
     print(filename)
-    text_tokenizer("Preprocessed","Tokenized",filename)
+    text_tokenizer("Preprocessed_test","Tokenized_test",filename)
 print("Tokenization completed!!")
 
 #pip3 install nltk; nltk.download('all') 
