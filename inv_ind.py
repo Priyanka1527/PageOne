@@ -1,6 +1,10 @@
 #Author: Rohan Choudhari
 #Last Updated: 4/11/2018
 
+#NOTES:
+#1. Take care of case where none of the query terms are in the search query  
+#2. Take care of case where query vector is 0 because the term appears in all the docs
+
 import glob
 import os, os.path
 import math
@@ -13,7 +17,7 @@ target_folder = 'Preprocessed/*.txt'
 for filename in glob.glob(target_folder):
     total_docs = total_docs+1
 
-
+print('Folder Location: ', target_folder)
 print('Total # of Docs: ', repr(total_docs))
 print('Creating the Dictionary')
 
@@ -21,12 +25,14 @@ print('Creating the Dictionary')
 
 term = []
 term_data = []
+filenames = []
 
 #Reading the file
 doc_no = 0;
 #for filename in glob.glob('Test_Preprocessed/*.txt'):
 for filename in glob.glob(target_folder):
     with open(filename,'r') as f:
+        filenames.append(filename)
 
         doc_no = doc_no+1;
 
@@ -86,8 +92,8 @@ for filename in glob.glob(target_folder):
 
 print('Creating the IDF Table')
 
-#dict_posting_list = sorted(term_data, key = lambda x: x[0])#Sorting term_data in ascending order according to the word
-dict_posting_list = term_data
+dict_posting_list = sorted(term_data, key = lambda x: x[0])#Sorting term_data in ascending order according to the word
+#dict_posting_list = term_data
 idf_table = []
 
 for node in dict_posting_list:
@@ -208,8 +214,34 @@ for node in query_vector:
     row.append(idf/vector_length)
     query_vector_normalized.append(row)
 
-for i in range(0, len(query_vector)):
-    print(query_vector_normalized[i])
 
-#NEXT STEPS
-#   Calculate the similarity
+# *************************** CALCULATING THE SIMILARITY ***************************
+document_similarity = []
+indices = []
+for i in range(0, total_docs):
+    document_similarity.append(0)
+
+for i in range(0, len(normalized_idf_table)):
+    row_doc = normalized_idf_table[i]
+    term_idf_table = row_doc[2]
+
+    row_query = query_vector_normalized[i]
+
+    if(row_query[1] == 0):
+        continue
+
+    for i in range(0, total_docs):
+        document_similarity[i] = document_similarity[i]+row_query[1]*term_idf_table[i]
+
+results = []
+for i in range(0, len(document_similarity)):
+    row = []
+    row.append(filenames[i])
+    row.append(document_similarity[i])
+    
+    results.append(row)
+
+results = sorted(results, key = lambda x: x[1], reverse=True)#Sorting term_data in ascending order according to the word
+
+print(*[i for i in results if i[1] != 0], sep = '\n')
+
