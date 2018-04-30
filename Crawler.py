@@ -1,6 +1,3 @@
-#Author: Priyanka Saha
-#Last Updated: 4/29/2018
-
 import requests
 import io
 from bs4 import BeautifulSoup
@@ -88,16 +85,18 @@ trading_spider()
 #print(url_crawled)
 size = len(url_crawled)
 print("The number of URLs crawled: ",size)
+url_list = open('url_list.txt', 'w')
 
 #download the webpages in html format from the crawled URLs
 for i in range(0,size):
 	with io.open("file_" + str(i) + ".htm", 'wb') as f:
 		r = requests.get(url_crawled[i], allow_redirects=True)
+		url_list.write(url_crawled[i] + '\n')
 		f.write(r.content)
+
+url_list.close()
 #end = timer()
 #print("Time taken to crawl these documents is :", end - start)
-
-
 
 
 
