@@ -1,3 +1,6 @@
+#Author: Priyanka Saha
+#Last Updated: 4/29/2018
+
 import requests
 from bs4 import BeautifulSoup
 from timeit import default_timer as timer
