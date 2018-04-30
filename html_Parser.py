@@ -1,3 +1,6 @@
+#Author: Priyanka Saha
+#Last Updated: 4/29/2018
+
 from lxml import html
 from lxml.html.clean import Cleaner
 import string
