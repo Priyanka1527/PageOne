@@ -1,5 +1,6 @@
 #Author: Priyanka Saha
-#Last Updated: 4/29/2018
+#Last Updated: 5/01/2018
+
 
 from lxml import html
 from lxml.html.clean import Cleaner
@@ -10,7 +11,7 @@ import os
 def html_preprocessing(in_dir):
     for filename in os.listdir(in_dir):
         print(filename)
-        parsing_html(in_dir,"Preprocessed",filename)
+        parsing_html(in_dir,"Crawled_preprocessed",filename)
         
 def ch_alpha(ch):
     if ch.isalpha():
@@ -40,4 +41,4 @@ def parsing_html(in_dir,preprocessed,file_name):
     input_file.close()
     out_file.close()
 
-html_preprocessing('docsnew/') 
+html_preprocessing('Crawled_Pages/') 
