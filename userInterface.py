@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+
 import search
 app = Flask(__name__, static_url_path = "/Images", static_folder = "Images")
 app.debug = True

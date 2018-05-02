@@ -1,4 +1,5 @@
 #from inv_ind.py import inverted_index
+
 import search
 class main:
     #vector_space = inverted_index()  
