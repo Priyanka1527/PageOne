@@ -1,7 +1,11 @@
+#Author: Priyanka Saha
+#Last updated on: May 01, 2018
+
 import requests
 import io
 from bs4 import BeautifulSoup
 from timeit import default_timer as timer
+import pickle
 
 #web spider to crawl the pages from IMDB
 url_crawled =[]
@@ -86,15 +90,23 @@ trading_spider()
 size = len(url_crawled)
 print("The number of URLs crawled: ",size)
 url_list = open('url_list.txt', 'w')
+filename_url_list = []
 
 #download the webpages in html format from the crawled URLs
 for i in range(0,size):
-	with io.open("file_" + str(i) + ".htm", 'wb') as f:
+	filename = 'file_' + str(i) + '.htm'
+	row =[]
+	row.append(filename)
+	row.append(url_crawled[i])
+	filename_url_list.append(row)
+	print(filename)
+	with io.open(filename, 'wb') as f:
 		r = requests.get(url_crawled[i], allow_redirects=True)
 		url_list.write(url_crawled[i] + '\n')
 		f.write(r.content)
-
+print(*filename_url_list, sep='\n')
 url_list.close()
+pickle.dump(filename_url_list, open('url_map.p', 'wb'))
 #end = timer()
 #print("Time taken to crawl these documents is :", end - start)
 
