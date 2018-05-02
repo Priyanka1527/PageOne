@@ -1,0 +1,1058 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="application-name" content="Investopedia"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <title>Investopedia Stock Simulator</title><meta name="Description" content="Test your skills for FREE on the #1 stock market game with Investopedias Stock Simulator. Get $100,000 in virtual cash and start trading today.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" content="Test your skills for FREE on the #1 stock market game with Investopedias Stock Simulator. Get $100,000 in virtual cash and start trading today.">
+<meta name="viewport" content="width=device-width, initial-scale=1">    <link rel="canonical" href="https://www.investopedia.com/simulator/" />
+    <link href="https://i.investopedia.com/public/img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<link href="https://i.investopedia.com/dest/css/simulator.css?v=201804101100" media="screen" rel="stylesheet" type="text/css">
+<link href="https://i.investopedia.com/public/img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"><script language="javascript" type="text/javascript">
+    var sem_pageview = false;
+    var sem_ocode = '9999';
+    var sem_ldid = '';
+    var sem_sh = '';
+    function updateSemVariable(query) {
+        if (query[1] === undefined) {
+            return;
+        }
+        switch(query[0]) {
+            case 'o':
+                sem_ocode = query[1];
+                break;
+            case 'ldid':
+                sem_ldid = query[1];
+                break;
+            case 'sh':
+                sem_sh = query[1];
+                break;
+        }
+    }
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+    function getSemCookie() {
+        var queryStr = getCookie('semuser');
+        if (queryStr == "") {
+            return;
+        }
+        sem_pageview = true;
+        var queries = queryStr.split("&");
+        for (var i = 0, l = queries.length; i < l; i++) {
+            var query = queries[i].split('=');
+            updateSemVariable(query);
+        }
+    }
+    getSemCookie();
+    var updateAup = function(aUp) {
+        aUp = aUp.replace("INV-NA", "invsem-serp-ds");
+        var utms = null;
+        if (typeof getUrlParam === "function") {
+            try {
+                utms = getUrlParam("utm_source");
+            } catch (e) {}
+        }
+        var aUp_arr = aUp.split("/");
+        var last = aUp_arr.pop();
+        aUp_arr.push((utms !== null ? utms : "dir") +
+            "_" + (typeof sem_ocode !== "undefined" ?
+                sem_ocode : 0));
+        if (aUp_arr.length > 3) {
+            aUp_arr[3] = last;
+        }
+        return aUp_arr.join("/");
+    };
+    if (typeof googletag !== "undefined") {
+        googletag.cmd.push( function() {
+            if ((typeof sem_pageview !== 'undefined') && (sem_pageview == true)) {
+                var processArgs = function(arguments) {
+                    if (typeof arguments === "object") {
+                        for (var i = 0; i < arguments.length; i++) {
+                            if (arguments[i].indexOf("8397") > -1) {
+                                arguments[i] = updateAup(arguments[i]);
+                                break;
+                            }
+                        }
+                    }
+                    return arguments;
+                };
+                googletag.defineSlot = (function() {
+                    var orig_func = googletag.defineSlot;
+                    return function() {
+                        return orig_func.apply(this, processArgs(arguments));
+                    };
+                })();
+                googletag.defineOutOfPageSlot = (function() {
+                    var orig_func = googletag.defineOutOfPageSlot;
+                    return function() {
+                        return orig_func.apply(this, processArgs(arguments));
+                    };
+                })();
+            }
+        });
+    }
+</script><script type="text/javascript" src="https://i.investopedia.com/public/simulator/js/jquery.min.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/public/js/jquery.mcs.min.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/public/simulator/js/cookie.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/public/simulator/js/cookiemix.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/public/simulator/js/g.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/public/simulator/js/microsoftAjax.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/public/simulator/js/microsoftAjaxWebForms.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/dest/js/global.js?v=201804101100"></script>
+<script type="text/javascript" src="https://i.investopedia.com/simulator_ui/js/ScrollingTicker.js?v=201804101100"></script>
+</head>
+
+<!--shift_source: ip-10-127-10-86.ec2.internal -->
+<body class="simulator-page no-login" onunload="SaveTickerPos();">
+
+
+<div style="display: none;">
+    <!-- Start of DoubleClick Spotlight Tag: Please do not remove -->
+    <!-- Activity Name for this tag is:IP Simulator -->
+    <!-- Web site URL where tag should be placed: http://www.investopedia.com/simulator -->
+    <!-- This tag must be placed within the opening <body> tag, as close to the beginning of it as possible -->
+    <!-- Creation Date: Thu Jul 02 17:02:35 EDT 2009 -->
+    <script language="JavaScript">
+        function SaveTickerPos()
+        {
+            try
+            {
+                for (var obj in allTickers){
+                    allTickers[obj].paused = true;
+                    jQuery.cookie(allTickers[obj].cookieName, allTickers[obj].x, {path: '/'});
+                }
+            }
+            catch(e){}
+        }
+
+        var axel = Math.random() + "";
+        var a = axel * 10000000000000;
+        document.write('<img src="https://ad.doubleclick.net/activity;src=2359949;type=ips;cat=ips;ord=1;num=' + a + '?" width=1 height=1 border=0>');
+    </script>
+    <noscript>
+        <img src="https://ad.doubleclick.net/activity;src=2359949;type=ips;cat=ips;ord=1;num=1?" width=1 height=1 border=0>
+    </noscript>
+    <!-- End of DoubleClick Spotlight Tag: Please do not remove -->
+
+    <!-- Begin comScore Tag -->
+    <script type="text/javascript" language="javascript">
+        var _comscore = _comscore || [];
+        _comscore.push({ c1: "2", c2: "18280457", c4: "https://www.investopedia.com/simulator/" });
+        (function() {
+            var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+            s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+            el.parentNode.insertBefore(s, el);
+        })();
+    </script>
+    <noscript>
+        <img src="https://sb.scorecardresearch.com/p?c1=2&c2=18280457&c4=https://www.investopedia.com/simulator/&cv=2.0&cj=1" />
+    </noscript>
+    <!-- End comScore Tag -->
+</div>
+<script type='text/javascript' language="JavaScript">
+    //<![CDATA[
+    if (getCookie('freenewsletterreg') == null) {
+        setCookie("freenewsletterreg", "ad", 30);
+    }
+    var user_info = $.parseJSON(decodeURIComponent(getCookie('user_info')).replace(/\+/g, ' '));
+    //]]>
+</script>
+
+<!--<script type='text/javascript' src="https://www.investopedia.com/simulator/Common/VcidScript.ashx?u=e3bfd87f21d741578241089c9aa5f4c8"></script>-->
+<script type="text/javascript">
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+</script>
+
+<script type="text/javascript">
+    if (!isMobile()) {
+      (function() {
+        var gads = document.createElement("script");
+        gads.async = true;
+        gads.type = "text/javascript";
+        var useSSL = "https:" == document.location.protocol;
+        gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+        var node =document.getElementsByTagName("script")[0];
+        node.parentNode.insertBefore(gads, node);
+      })();
+    }
+</script>
+
+<script type="text/javascript">
+    if (isMobile()) {
+        (function () {
+            var gads = document.createElement("script");
+            gads.async = true;
+            gads.type = "text/javascript";
+            var useSSL = "https:" == document.location.protocol;
+            gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+            var node = document.getElementsByTagName("script")[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    }
+</script>
+
+<!-- Lotame Audience Tag for IAC Network -->
+<script type="text/javascript" src="https://ad.crwdcntrl.net/5/c=4736/pe=y/var=ccauds"></script>
+
+
+        <script type='text/javascript'>
+        function getUrlParam(name)
+{
+	name = name.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
+	var regexS = "[\?&]"+name+"=([^&#]*)";
+	var regex = new RegExp( regexS );
+	var results = regex.exec( window.location.href );
+	if( results == null )    return null;
+	else    return results[1];
+}
+
+                var hasFlash = (function() {
+                    if (typeof navigator.plugins != "undefined" && typeof navigator.plugins["Shockwave Flash"] == "object") {
+                        return true;
+                    } else if (typeof window.ActiveXObject != "undefined") {
+                        try {
+                            new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+                            return true;
+                        } catch (e) { }
+                    }
+                    return false;
+                })();
+                var maxScreenWidth = "2600";
+                try {
+                    if (screen.width <= 1000) maxScreenWidth = "1000";
+                    else if (screen.width <= 1200 && screen.width > 1000) maxScreenWidth = "1200";
+                    else if (screen.width <= 1400 && screen.width > 1200) maxScreenWidth = "1400";
+                    else if (screen.width <= 1600 && screen.width > 1400) maxScreenWidth = "1600";
+                } catch (e) { }
+
+                function getDfpReferrerHost() {
+                    var ref = document.referrer;
+                    if ((ref == null) || (ref.length == 0)) return 'Direct';
+                    ref = ref.toLowerCase();
+                    if (ref.indexOf('http://') == 0) ref = ref.substring(7);
+                    if (ref.indexOf('https://') == 0) ref = ref.substring(8);
+                    if (ref.indexOf('/') >= 0) ref = ref.substring(0, ref.indexOf('/'));
+                    return ref;
+                }
+
+                function getDfpReferrerSearch() {
+                    var refHost = getDfpReferrerHost();
+                    if (refHost.indexOf('.google.') >= 0) return 'True';
+                    if (refHost.indexOf('.bing.') >= 0) return 'True';
+                    if (refHost.indexOf('.yahoo.') >= 0) return 'True';
+                    if (refHost.indexOf('.ask.') >= 0) return 'True';
+                    if (refHost.indexOf('.aol.') >= 0) return 'True';
+                    return 'False';
+                }
+
+                googletag.cmd.push(function() {
+                        googletag.defineSlot('/8397/INV-NA/Investing/Investing/AF-Left-Button/Simulator', [154, 108], 'AdSlot_AF-Left-Button').setTargeting("Location", "AF-Left-Button").addService(googletag.pubads());
+
+                        googletag.defineSlot('/8397/INV-NA/Investing/Investing/AF-Left-Multi/Simulator', [[300, 600], [300, 250], [160, 600], [120, 600]], 'AdSlot_AF-Left-Multi').addService(googletag.pubads()).setTargeting("Location", "AF-Left-Multi").setTargeting("pos","top");
+
+                        googletag.defineSlot('/8397/INV-NA/Investing/Investing/AF-Top-Leaderboard/Simulator', [[728, 90], [970, 66]], 'AdSlot_AF-Top-Leaderboard').setTargeting("Location", "AF-Top-Leaderboard").setTargeting("pos", "top").addService(googletag.pubads());
+
+                        googletag.defineSlot('/8397/INV-NA/Investing/Investing/BF-Right-Button1/Simulator', [[120, 60], [120, 90]], 'AdSlot_BF-Right-Button1').addService(googletag.pubads()).setTargeting("Location", "BF-Right-Button1");
+
+                        googletag.defineSlot('/8397/INV-NA/Investing/Investing/BF-Right-Button2/Simulator', [[120, 60], [120, 90]], 'AdSlot_BF-Right-Button2').addService(googletag.pubads()).setTargeting("Location", "BF-Right-Button2");
+
+                        googletag.defineSlot('/8397/INV-NA/Investing/Investing/BF-Right-Button3/Simulator', [[120, 60], [120, 90]], 'AdSlot_BF-Right-Button3').addService(googletag.pubads()).setTargeting("Location", "BF-Right-Button3");
+
+                        googletag.defineSlot('/8397/INV-NA/Investing/Investing/BF-Right-Button4/Simulator', [[120, 60], [120, 90]], 'AdSlot_BF-Right-Button4').addService(googletag.pubads()).setTargeting("Location", "BF-Right-Button4");
+
+                        googletag.pubads().setTargeting('Type', 'Simulator');
+                        googletag.pubads().setTargeting('URL', '/simulator/');
+
+                        // Below Piece of code will read the Values from Lotame's response and will set the targeting param to GPT
+                        var dartCC = [];
+
+                        var lpid = (typeof(ccauds.Profile.pid) != 'undefined') ? ccauds.Profile.pid : "",
+                          ltpid = (typeof(ccauds.Profile.tpid) != 'undefined') ? ccauds.Profile.tpid : "";
+
+                        if (typeof(ccauds) != 'undefined')
+                        {
+                          for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++)
+                          {
+                              dartCC.push(ccauds.Profile.Audiences.Audience[cci].id);
+                          }
+                        }
+                        googletag.pubads().setTargeting("lpid",lpid);
+                        googletag.pubads().setTargeting("ltpid",ltpid);
+                        googletag.pubads().setTargeting("lseg",dartCC);
+                        // End
+                        /* if(typeof Krux !== 'undefined' && Krux){
+                                googletag.pubads().setTargeting("ksg",	Krux.segments);
+                                googletag.pubads().setTargeting("kuid",	Krux.user);
+                                googletag.pubads().setTargeting("khost",	encodeURIComponent(location.hostname));
+                        } */
+                        googletag.pubads().setTargeting('ReferrerHost', getDfpReferrerHost());
+                        googletag.pubads().setTargeting('ReferrerSearch', getDfpReferrerSearch());
+                        googletag.pubads().setTargeting('DFP_VCBAUDSEG', ['Investors','Active Traders','Active Traders:Instrument-Stocks','Investors:Instrument-Stocks','Investors:Instrument-ETF','Active Traders:Instrument-Options&Futures','Active Traders:Account-Brokerage','Investors:Account-Brokerage']);
+                      googletag.pubads().setTargeting('Environment', 'Live');              var dfp_spv = parseInt(jQuery.cookie('dfp_spv') || 0) + 1;
+              jQuery.cookie('dfp_spv', dfp_spv, {path: '/'});
+              if(getUrlParam('adtest'))
+                googletag.pubads().setTargeting('adtest', getUrlParam('adtest').toString());
+              googletag.pubads().setTargeting('spv', dfp_spv.toString());
+              googletag.pubads().setTargeting('rpv', Math.round(Math.random()*100).toString());
+                        googletag.pubads().set('page_url', 'https://www.investopedia.com/simulator/');
+                        googletag.pubads().enableAsyncRendering();
+                        googletag.enableServices();
+                });
+        </script>
+    <script>
+        var refreshAd = function() {
+            var slots = googletag.pubads().getSlots();
+            var refreshCt = 0;
+            for (var i = slots.length - 1; i >= 0; i--) {
+                var slotElemId = slots[i].getSlotElementId();
+                if (slotElemId === "AdSlot_BF-Right-Button2") {
+                    googletag.pubads().refresh([slots[i]]);
+                    refreshCt++;
+                }
+                if (refreshCt >= 2) {
+                    break;
+                }
+            };
+        };
+        setTimeout(refreshAd, 15000);
+    </script><!-- Page Taxonomy -->
+<script type="text/javascript">
+//<![CDATA[
+  var _pageTaxonomy = {
+    "Hashkey": "$simulator$default",
+    "Channel": "Simulator",
+    "SubChannel": "",
+    "Advertising": "Investing",
+    "SubAdvertising": "Simulator",
+    "AdTarget": "investopedia.com/simulator",
+    "DfpTarget": "Investing/Investing",
+    "Tags": null,
+    "Type": "Simulator",
+    "Lucrativeness": null,
+    "Timelessness": "Timeless",
+    "Feature": "",
+    "Design": "",
+    "InterestLevel": null,
+    "Path" : "/simulator/",
+  };
+//]]>
+</script>
+<!-- End Page Taxonomy -->
+
+<!-- Google Tag Manager -->
+<noscript>
+  <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5V3WHJ"
+        height="0" width="0"
+        style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5V3WHJ');</script>
+<!-- End Google Tag Manager -->
+
+<script type="text/javascript">
+    dataLayer.push(_pageTaxonomy);
+    var pageviewID = genPageviewId();
+    dataLayer.push({'pageviewID' : pageviewID});
+</script>
+
+<!-- ================================= Header ================================= -->
+<div id="Header">
+
+    <div class="mid">
+        <div class="brand clear layout-size">
+            <a href="/" class="logo"></a>
+            <a href="https://www.investopedia.com/accounts/login.aspx?returnurl=https://www.investopedia.com/simulator/" class="link fr">Login</a>
+        </div>
+    </div>
+</div>
+<!-- ================================= Header //End ================================= -->
+
+<!-- ================================= Content ================================= -->
+<div id="Content">
+    <div class="signout-page">
+<!-- ---------------------------------- section1 ---------------------------------- -->
+<div class="section1 clear">
+    <!-- Layout title -->
+    <div class="layout-title center">
+        <h1>Stock Market Game</h1>
+    </div>
+    <!-- Lyaout title //End -->
+    <!-- regform -->
+        <style>
+        input#edit-email-detect {
+            display: none;
+        }
+    </style>
+    <form class="reg-form" id="registerForm" action="https://www.investopedia.com/accounts/signupsimulatormember/?signuptype=member&site=simulator" method="post" accept-charset="UTF-8">
+        <input type="hidden" name="form_id" value="account_api_member_registration_form">
+        <!-- row -->
+        <div class="row first">
+            <div class="column-12">
+                <h3>Register Now</h3>
+                <p>Complete the form below: </p>
+            </div>
+        </div>
+        <!-- row //End -->
+
+        <!-- row -->
+        <div class="row">
+            <div class="column-6">
+                <div class="form-box">
+                    <div class="form-item form-type-textfield">
+                        <input type="text" id="edit-email-detect" name="email_detect" value="" size="10" class="form-text form-field" placeholder="Email Address">
+                        <input type="text" id="edit-inv-id" name="inv_id" value="" size="10" class="form-text form-field" placeholder="Email Address">
+                    </div>
+
+                </div>
+            </div>
+            <div class="column-6">
+                <div class="form-box">
+                    <div class="form-item form-type-textfield">
+                        <input type="text" id="edit-display-name" name="display_name" value="" size="10" maxlength="50" class="form-text form-field"  placeholder="Username">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- row //End -->
+        <!-- row -->
+        <div class="row">
+            <div class="column-6">
+                <div class="form-box">
+                    <div class="form-item form-type-textfield">
+                        <input type="password" id="edit-password" name="password" value="" class="form-text form-field" placeholder="Password">
+                    </div>
+                </div>
+            </div>
+            <div class="column-6">
+                <div class="form-box">
+                    <div class="form-item form-type-textfield">
+                        <input type="password" id="edit-confirm-password" name="confirm_password" value="" class="form-text form-field" placeholder="Confirm Password">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- row //End -->
+
+        <!-- row -->
+        <div class="box box-medium-margin row">
+            <div class="column-12">
+                <input type="button" id="registerButton" name="op" value="Register" class="form-submit">
+            </div>
+        </div>
+        <!-- row //End -->
+
+        <i class="icon"></i>
+    </form>
+    <!-- regform //End -->
+</div>
+<!-- ---------------------------------- section1 //End ---------------------------------- -->
+    <!-- Begin Social Fulcrum Continued Flow Form Update Script -->
+    <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            //grab the entire query string
+
+            var query = document.location.href.split('?')[1];
+
+            //extract each field/value pair
+            query = query.split('&');
+
+            //run through each pair
+            for (var i = 0; i < query.length; i++) {
+
+                //split up the field/value pair into an array
+                var field = query[i].split("=");
+
+                //fix broken @ symbols
+                if (field[1].search("%40") != -1) {
+                    field[1] = field[1].split("%40").join('@');
+                };
+
+                //fix broken spaces
+                if (field[1].search("%20") != -1) {
+                    field[1] = field[1].split("%20").join(" ");
+                };
+
+                if (document.getElementById(field[0]) != null) {
+                    //target the field and assign its value
+                    document.getElementById(field[0]).value = field[1];
+                };
+
+            };
+
+        });
+
+    </script>
+    <!-- End Social Fulcrum Continued Flow Form Update Script -->
+
+<script>
+    (function($){
+        $.invValidate = function() {
+
+        };
+        jQuery.invValidate.methods={
+            required: function( value ) {
+                return $.trim(value).length > 0;
+            },
+
+            email: function( value) {
+                return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value);
+            },
+
+            url: function( value ) {
+                return /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
+            },
+            minlength: function( value,param ) {
+                var length = $.trim(value).length;
+                return length >= param;
+            },
+
+            alphanumeric: function(value) {
+                var alphanum = /^[a-zA-Z0-9]+$/;
+                return alphanum.test(value);
+            },
+
+            // http://jqueryvalidation.org/maxlength-method/
+            maxlength: function( value, element, param ) {
+                var length = $.trim(value).length;
+                return length <= param;
+            },
+
+            // http://jqueryvalidation.org/rangelength-method/
+            rangelength: function( value, element, param ) {
+                var length = $.trim(value).length;
+                return ( length >= param[0] && length <= param[1] );
+            },
+
+            // http://jqueryvalidation.org/min-metho d/
+            min: function( value,param ) {
+                return value >= param;
+            },
+
+            // http://jqueryvalidation.org/max-method/
+            max: function( value, param ) {
+                return value <= param;
+            },
+
+            // http://jqueryvalidation.org/range-method/
+            range: function( value, param ) {
+                return ( value >= param[0] && value <= param[1] );
+            },
+
+            // http://jqueryvalidation.org/equalTo-method/
+            equalTo: function( value, param ) {
+                return value === param;
+            }
+        }
+    })(jQuery)
+</script>
+
+<script>
+    $(document).ready(function(){
+        $(".form-field").on("tap",function(){
+            $(".tooltip-help-message").parents('.tooltip').find(".tooltip-help-message").css("display","none");
+            $(this).parents('.tooltip').find(".tooltip-help-message").css("display","inline-block");
+        });
+    });
+
+
+
+    function errorHandler(element,message){
+        if(!element.hasClass("warning")){
+            element.addClass("warning");
+            element.parent().addClass("tooltip");
+            $("<span class=\"content tooltip-help-message\"></span>").appendTo(element.parent());
+        }
+        element.next().text(message).append("<span class=\"pointer\"></span>");
+    }
+    function successHandler(element){
+        if(element.hasClass("warning")){
+            element.removeClass("warning");
+            element.parent().removeClass("tooltip");
+            element.next().remove();
+        }
+    }
+    $("#registerButton").click(function(){
+        var validate=true;
+        var emailRequire=$.invValidate.methods.required($("#edit-inv-id").val());
+        if(!emailRequire){
+            validate=false;
+            errorHandler($("#edit-inv-id"),'Please provide your email address.');
+        }
+
+        var emailFormat=$.invValidate.methods.email($("#edit-inv-id").val())
+        if(emailRequire&&!emailFormat){
+            validate=false;
+            errorHandler($("#edit-inv-id"),'Please enter a valid email address.');
+        }
+
+        if(emailRequire&&emailFormat)
+            successHandler($("#edit-inv-id"));
+
+        var usernameRequire=$.invValidate.methods.required($("#edit-display-name").val());
+        if(!usernameRequire){
+            validate=false;
+            errorHandler($("#edit-display-name"),'Provide a name that will be displayed when you log in.');
+        }
+
+        var usernameAlphaNum=$.invValidate.methods.alphanumeric($("#edit-display-name").val());
+        if(usernameRequire&&!usernameAlphaNum){
+            validate=false;
+            errorHandler($("#edit-display-name"),'The user name can only contain letters (a-z) and numbers.');
+        }
+
+        if(usernameRequire&&usernameAlphaNum){
+            successHandler($("#edit-display-name"));
+        }
+
+        var passwordMinLength=$.invValidate.methods.minlength($("#edit-password").val(),6);
+        if(!passwordMinLength){
+            validate=false;
+            errorHandler($("#edit-password"),'Minimum of 6 characters.');
+        }else{
+            successHandler($("#edit-password"));
+        }
+
+        var confirmPasswordRequire=$.invValidate.methods.required($("#edit-confirm-password").val());
+        if(!confirmPasswordRequire){
+            validate=false;
+            errorHandler($("#edit-confirm-password"),'A password confirmation is required.');
+        }
+
+        var confirmPasswordMatch=$.invValidate.methods.equalTo($("#edit-confirm-password").val(),$("#edit-password").val());
+        if(passwordMinLength&&confirmPasswordRequire&&!confirmPasswordMatch){
+            validate=false;
+            errorHandler($("#edit-confirm-password"),'Confirmation must match password.');
+        }
+
+        if(confirmPasswordRequire&&confirmPasswordMatch){
+            successHandler($("#edit-confirm-password"));
+        }
+
+        if(validate){
+            document.getElementById("registerForm").submit();
+        }
+    });
+
+    $(document).keydown(function(){
+        if(event.keyCode==13)
+            $("#registerButton").trigger("click");
+    });
+</script>
+
+
+<!-- ---------------------------------- section2 ---------------------------------- -->
+<div class="section2 clear">
+
+    <div class="section-inner">
+        <!-- left -->
+        <div class="fl">
+            <!-- Compete, Risk Free with $100,000 Virtual Cash -->
+            <div class="section-row">
+                <div class="section-icon first">
+                    <img src="https://i.investopedia.com/public/img/icon_simfeature1.png">
+                </div>
+                <div class="section-txt">
+                    <h3>Compete, Risk Free with $100,000 in Virtual Cash</h3>
+                    <p>Start with $100,000 in virtual cash and put your trading skills to the test! Compete with thousands of Investopedia traders and trade your way to the top!</p>
+                </div>
+            </div>
+            <!-- Connecting Over 700,000 Investors Worldwide -->
+            <div class="section-row">
+                <div class="section-icon second">
+                    <img src="https://i.investopedia.com/public/img/icon_simfeature2.png">
+                </div>
+                <div class="section-txt">
+                    <h3>Connect with over 700,000 worldwide</h3>
+                    <p>Interact with other traders from diverse backgrounds and experiences, and learn the methods behind their trades to become a better investor.</p>
+                </div>
+            </div>
+        </div>
+        <!-- left //End -->
+
+        <!-- right -->
+        <div class="fr">
+            <!-- A Stepping Stone to the Real Markets -->
+            <div class="section-row">
+                <div class="section-icon first">
+                    <img src="https://i.investopedia.com/public/img/icon_simfeature4.png">
+                </div>
+                <div class="section-txt">
+                    <h3>A Stepping Stone to the Real Markets</h3>
+                    <p>The ideal platform to get your financial feet wet! Submit trades in a virtual environment before you start risking your own capital.</p>
+                </div>
+            </div>
+            <!-- Test Your Skills With Trading Challenges -->
+            <div class="section-row">
+                <div class="section-icon second">
+                    <img src="https://i.investopedia.com/public/img/icon_simfeature3.png">
+                </div>
+                <div class="section-txt">
+                    <h3>Test Your Skills With Trading Challenges</h3>
+                    <p>Join or create challenges with your friends and other investors. Compete to see who has the best investment results daily.</p>
+                </div>
+            </div>
+        </div>
+        <!-- right //End -->
+    </div>
+
+</div>
+<!-- ---------------------------------- section2 //End ---------------------------------- -->
+
+<div class="section2_5 clear">
+    <div class="section-inner">
+        <div class="section-row">
+            <div class="section-txt">
+                <p>Have you thought about buying stock in a certain company but just didn’t have the cash to make a trade? Or perhaps you heard news about a company and thought to yourself that the stock price was poised to rise? Or maybe you have always just wanted to know more about picking stocks? Thanks to virtual stock exchange technology, stock market simulators (aka stock market games) that let you pick securities, make trades and track the results — all without risking a penny—are as close as your keyboard or cell phone.</p>
+                <div>
+                    <h2>What is a Stock Market Game?</h2>
+                    <p>Online stock market games are simple, easy-to-use programs that imitate the real-life workings of the equities markets. Most stock market games give users $100,000 in pretend money to start. From there, players pick to purchase; most of the stocks are those that are available on the New York Stock Exchange (NYSE), Nasdaq and the American Stock Exchange (AMEX).</p>
+                    <p>Most online stock simulators try to match real-life circumstances and actual performance as much as possible. Many even charge broker fees and commissions. These charges can significantly affect an investor's bottom line, and including these in simulated trading helps users learn to factor these costs in when making purchasing decisions. Along the way, they’ll also learn the basics of finance and learn the basic terminology of investing, such as momentum trading, shorts and P/E ratios.</p>
+                </div>
+                <div>
+                    <h3>Some Caveats</h3>
+                    <p>These useful skills can be applied to an actual trading account. Of course, in the real world, there are numerous factors that affect trading and investment decisions, such as one's risk tolerance, investment horizon, investment objectives, taxation issues, need for diversification, and so on. It is impossible to take investor psychology into account because actual hard cash is not at risk.</p>
+                    <p>Also, while the Investopedia Stock Simulator comes close to replicating the real-life experience of trading, it does not currently offer a real-time trading environment with live prices. However, for most users, the 15-minute lag in trade execution will not be an impairment to their learning experience.</p>
+                </div>
+                <div>
+                    <h3>Investopedia’s Stock Simulator: Play Your Way to Profits</h3>
+                    <p>The Investopedia Stock Simulator is well integrated with the site’s familiar educational content. Using real data from the markets, the trading occurs in context of a game, which can involve joining an existing game or the creation of a custom game that allows the user to configure the rules. Options, margin trading, adjustable commission rates and other choices provide a variety of ways to customize the games. From there, an easy-to-navigate menu lets users update their profiles, review holdings, trade and check their rankings, research investments and review their awards (which can be earned for completing various activities).</p>
+                </div>
+
+                <p class="center"><a href="#" class="button scrollup">Register</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ---------------------------------- section3 ---------------------------------- -->
+<div class="section3">
+    <!-- Layout title -->
+    <div class="layout-title center">
+        <h1>Think you have what it takes?</h1>
+        <h2>Join 700,000 other investors and see where you stack up.</h2>
+    </div>
+    <!-- Lyaout title //End -->
+</div>
+<!-- ---------------------------------- section3 //End ---------------------------------- -->
+
+</div>
+
+
+<script type="text/javascript" language="javascript">
+    (function ($) {
+        $(document).ready(function(){
+
+            // set the default link paths
+            var loginUrl = 'https://www.investopedia.com/accounts' + '/login.aspx?returnurl=';
+            var currUrl = window.top.location.href;
+            var accounts = 'https://www.investopedia.com/accounts';
+
+            // check for development servers
+            if (currUrl.indexOf('localhost')!=-1) {
+                loginUrl = accounts + '/login.aspx?returnurl=';
+            }
+            if (currUrl.indexOf('mnt')!=-1) {
+                loginUrl = accounts + '/login.aspx?returnurl=';
+            }
+            if (currUrl.indexOf('local')!=-1) {
+                loginUrl = accounts + '/login.aspx?returnurl=';
+            }
+            if (currUrl.indexOf('staging')!=-1) {
+                loginUrl = accounts + '/login.aspx?returnurl=';
+            }
+            $('.SignInButton').click(function(){
+                open(loginUrl + currUrl , target = '_self');
+                return false;
+            });
+            $('.button.scrollup').click(function(e) {
+                $('html, body').animate({scrollTop:0}, '500', function(){
+                    $('#edit-email').focus();
+                });
+                e.preventDefault();
+            });
+
+            //$('input[name=facebook]').attr('href',accounts+'/facebook/connect.aspx?returnurl='+currUrl);
+            $('#facebookSignIn').click(function(){
+                open(accounts+'/facebook/connect.aspx?returnurl='+currUrl,target = '_self');
+                return false;
+            });
+
+            // set the links
+            //$('#SignIn').attr('href', (loginUrl + currUrl));
+        });
+    })(jQuery);
+</script></div>
+<!-- ================================= Content //End ================================= -->
+
+
+<!-- ================================= Footer ================================= -->
+<div id="Footer">
+    <div class="mid">
+        <div class="footer-inner layout-size">
+            <a href="#" class="to-top">TOP</a>
+            <!-- Footer logo -->
+            <div class="clear">
+                <a href="/" class="logo"></a>
+
+                <div class="search-bars">
+                    <div class="search-box clear">
+
+                        <div class="form-box form-group">
+                            <div>
+                                <div class="container-inline form-wrapper" id="edit-basic">
+                                    <div class="form-item form-type-textfield form-item-symbol">
+                                        <input name="keyword" type="text" id="keywordBottom"
+                                               value="Search Investopedia"
+                                               onKeyDown="if (event.keyCode == 13) { if (event.stopPropagation) event.stopPropagation(); if (event.preventDefault) event.preventDefault(); event.returnValue = false; event.cancel = true; document.getElementById('searchKeywordButton').click(); }"
+                                               onClick="this.value=''"
+                                               class="SearchValue form-text input-text input-help invSearchText" />
+                                    </div>
+                                    <input type="button" class="invSearchBtn search-btn form-submit" value="Search" id="searchKeywordButtonBottom"/>
+
+                                    <script type="text/javascript">
+                                        (function ($) {
+                                            $(document).ready(function () {
+                                                $('#searchKeywordButtonBottom').click(function () {
+                                                    var query = $("#keywordBottom").val();
+                                                    if (query == 'enter keywords' || query == '')
+                                                        return false;
+                                                    window.location.href = 'https://www.investopedia.com/search/default.aspx?q=' + encodeURIComponent(query);
+                                                });
+                                            });
+                                        })(jQuery);
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-box clear">
+                        <div class="form-box form-group">
+                            <div>
+                                <div class="container-inline form-wrapper" id="edit-basic">
+                                    <div class="form-item form-type-textfield form-item-symbol">
+                                        <input name="symbol" type="text" value="Symbol"
+                                               maxlength="10" id="SearchQuotes1_symbol_bottom"
+                                               onKeyDown="if (event.keyCode == 13) { if (event.stopPropagation) event.stopPropagation(); if (event.preventDefault) event.preventDefault(); event.returnValue = false; event.cancel = true; document.getElementById('SearchQuotes1_quoteSymbolButton').click(); }"
+                                               onClick="this.value=''"
+                                               class="form-text input-help"/>
+                                    </div>
+                                    <input type="button" class="invSearchBtn search-btn form-submit" value="Get Quote" id="SearchQuotes1_quoteSymbolButton_bottom"/>
+
+                                    <script type="text/javascript">
+                                        (function ($) {
+                                            $(document).ready(function () {
+                                                $('#SearchQuotes1_quoteSymbolButton_bottom').click(function () {
+                                                    var query = $("#SearchQuotes1_symbol_bottom").val();
+                                                    if (query == 'enter symbol' || query == '')
+                                                        return false;
+                                                    window.location.href = 'https://www.investopedia.com/markets/stocks/' + encodeURIComponent(query).toLowerCase() + '/';
+                                                });
+                                            });
+                                        })(jQuery);
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="flist">
+                <li>Dictionary:</li>
+                <li><a href="/terms/1/">#</a></li>
+                                    <li><a href="/terms/a/">a</a></li>
+                                    <li><a href="/terms/b/">b</a></li>
+                                    <li><a href="/terms/c/">c</a></li>
+                                    <li><a href="/terms/d/">d</a></li>
+                                    <li><a href="/terms/e/">e</a></li>
+                                    <li><a href="/terms/f/">f</a></li>
+                                    <li><a href="/terms/g/">g</a></li>
+                                    <li><a href="/terms/h/">h</a></li>
+                                    <li><a href="/terms/i/">i</a></li>
+                                    <li><a href="/terms/j/">j</a></li>
+                                    <li><a href="/terms/k/">k</a></li>
+                                    <li><a href="/terms/l/">l</a></li>
+                                    <li><a href="/terms/m/">m</a></li>
+                                    <li><a href="/terms/n/">n</a></li>
+                                    <li><a href="/terms/o/">o</a></li>
+                                    <li><a href="/terms/p/">p</a></li>
+                                    <li><a href="/terms/q/">q</a></li>
+                                    <li><a href="/terms/r/">r</a></li>
+                                    <li><a href="/terms/s/">s</a></li>
+                                    <li><a href="/terms/t/">t</a></li>
+                                    <li><a href="/terms/u/">u</a></li>
+                                    <li><a href="/terms/v/">v</a></li>
+                                    <li><a href="/terms/w/">w</a></li>
+                                    <li><a href="/terms/x/">x</a></li>
+                                    <li><a href="/terms/y/">y</a></li>
+                                    <li><a href="/terms/z/">z</a></li>
+                            </ul>
+            <div class="column-list clear">
+                <div class="col-l">
+                    <ul>
+                        <li class="first">Content Library</li>
+                        <li><a href="/articles/">Articles</a></li>
+                        <li><a href="/dictionary/">Terms</a></li>
+                        <li><a href="/video/">Videos</a></li>
+                        <li><a href="/university/">Tutorials</a></li>
+                        <li><a href="/slide-show/">Slideshows</a></li>
+                        <li><a href="/ask/">FAQs</a></li>
+                        <li><a href="/calculator/">Calculators</a></li>
+                        <li><a href="/active-trading/chartadvisor/">Chart Advisor</a></li>
+                        <li><a href="/markets/stock-analysis/">Stock Analysis</a></li>
+                        <li><a href="/simulator/">Stock Simulator</a></li>
+                        <li><a href="/exam-prep-quizzes/">Exam Prep Quizzer</a></li>
+                        <li><a href="/net-worth/">Net Worth Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="col-r">
+                    <ul>
+                        <li class="first">Connect With Investopedia</li>
+                    </ul>
+                    <a target="_blank" title="Go to the Investopedia Facebook Page." href="https://www.facebook.com/Investopedia" rel="nofollow" class="footicon fb"></a>
+                    <a target="_blank" title="Go to the Investopedia Twitter Page." href="https://twitter.com/#!/investopedia" rel="nofollow" class="footicon twtr"></a>
+                    <a target="_blank" title="Go to the Investopedia Google Page." href="https://plus.google.com/+investopedia/posts " rel="nofollow" class="footicon gogl"></a>
+                    <a title="Go to the Investopedia LinkedIn Page." href="https://www.linkedin.com/company/investopedia-ulc" class="footicon lnkd"></a>
+                    <a title="Subscribe to Investopedia RSS news feeds here." href="/rss/" class="footicon rss"></a>
+                    <a title="Go to the Investopedia" href="/" class="footicon inv"></a>
+                </div>
+            </div>
+
+            <div class="column-list clear">
+                <div class="col-l">
+                    <ul>
+                        <li class="first">Work With Investopedia</li>
+                        <li><a href="/corp/content-licensing.aspx">License Content</a></li>
+                        <li><a href="/corp/advertise.aspx">Advertise With Us</a></li>
+                        <li><a href="/corp/emailcampaign.aspx">Email Deployment</a></li>
+                        <li><a href="/corp/contactus.aspx">Contact Us</a></li>
+                        <li><a href="https://careers.smartrecruiters.com/IAC/investopedia" rel="nofollow">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-r">
+                    <div class="newsletter">
+
+                        <div class="form-box form-group">
+                            <form class="newsletter-widget-form newsletter-widget-form-footer" action="https://www.investopedia.com" method="post" id="account-api-newsletters-widget-deepblue-form--2" accept-charset="UTF-8">
+                                <div>
+                                    <div class="form-item form-type-textfield form-item-email" id="singUpFree">
+                                        <input type="text" id="edit-email--2" name="email" placeholder="Sign Up for Our Free Newsletters!" value="" size="60" maxlength="50" class="form-text">
+
+                                        <!--<a class="tooltip msg-validate">
+                                            <div>
+                                                <input type="text" id="edit-email--2" name="email" value="Sign Up for Our Free Newsletters!" size="60" maxlength="50" class="form-text warning">
+                                            </div>
+                                            <span class="content" style="display: none">
+                                                Please enter a valid email address.
+                                                <br>
+                                                <span class="pointer"></span>
+                                            </span>
+                                        </a>-->
+                                    </div>
+                                    <input type="hidden" name="default_newsletter_id" value="5">
+                                    <input type="submit" id="edit-submit--5" name="op" value="Subscribe" class="form-submit">
+                                    <input type="hidden" name="form_id" value="account_api_newsletters_widget_deepblue_form">
+                                </div>
+                            </form>
+                        </div>
+                        <script>
+                            (function ($) {
+                                $(document).ready(function () {
+                                    $("#edit-email--2").blur(function () {
+                                        if ($.trim($("#edit-email--2").val()).length == 0)
+                                            $("#edit-email--2").attr('placeholder', 'Sign Up for Our Free Newsletters!');
+                                    });
+                                    $("#edit-email--2").focus(function () {
+                                        if ($.trim($("#edit-email--2").val()).length == 0)
+                                            $("#edit-email--2").attr('placeholder', '');
+                                    });
+
+                                    $("#edit-submit--5").click(function () {
+                                        var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+                                        if (!pattern.test($.trim($("#edit-email--2").val()))) {
+                                            var box = $("#edit-email--2").wrap('<a class="tooltip msg-validate"><div></div><span class="content" style="display: none">Please enter a valid email address.<br><span class="pointer"></span></span></a>');
+                                            $("#edit-email--2").addClass('warning');
+                                            return false;
+                                        }
+                                    });
+                                });
+                            })(jQuery);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .mid -->
+    <div class="btm">
+        <div class="copyright layout-size clear">
+            <span>&copy; 2018, Investopedia, LLC.</span>
+                <span class="footer-legal-links">
+                    <a href="/corp/copyright.aspx">All Rights Reserved</a>
+                    <a href="/corp/termsofuse.aspx">Terms Of Use</a>
+                    <a href="/corp/privacypolicy.aspx" class="last">Privacy Policy</a>
+                </span>
+        </div>
+    </div>
+</div>
+<!-- ================================= Footer //End ================================= -->
+
+<script type="text/javascript">
+    (function ($) {
+        var uiTabset = $('.ui-tabset');
+        uiTabset.each(function(){
+            $(this).prepend('<div class="ui-tabset-title"><span>' + $(this).find('.selected,.current').text() + '</span><i></i></div>');
+        });
+
+        $('.ui-tabset-title').click(function () {
+            var list = $(this).parent().find('ul');
+            if (list.css('display') == 'none')
+                list.show();
+            else
+                list.hide();
+        });
+        uiTabset.find('li').click(function () {
+            var icon = $(this).parent().parent().find('.ui-tabset-title span');
+            icon.html($(this).text());
+            if (icon.css('display') != 'none') {
+                $(this).parent().hide();
+            }
+
+        });
+    })(jQuery);
+</script>
+<script language="javascript" type="text/javascript">
+    function trackSemVisit(trackingType) {
+        var trackingPixel = document.createElement("img");
+        trackingPixel.src = "/sem/sp.gif?type=" + trackingType + "&ocode=" + sem_ocode + "&ldid=" + sem_ldid;
+        document.body.appendChild(trackingPixel);
+    }
+    if ((typeof sem_pageview !== 'undefined') && (sem_pageview == true)) {
+    trackSemVisit('pageview');
+}
+</script></body>
+</html>
