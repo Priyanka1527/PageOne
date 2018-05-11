@@ -11,8 +11,9 @@ def student():
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
         if request.method == 'POST':
-            print("This is the user value :  ", request.get_data());
-            search.search_query((request.get_data()).decode("utf-8") )
+            query = (request.get_data()).decode("utf-8")
+            query = query[4:]
+            search.search_query(query, 3)
             return render_template('results.html')
 
 

@@ -1,7 +1,9 @@
 import pickle
 import re
 import math
-def search_query(query):
+def search_query(query, k):
+
+    k = int(k)
 
     normalized_idf_table = pickle.load( open( "normalized_idf.p", "rb" ) )
     map_list = pickle.load( open( "map_list.p", "rb" ) )
@@ -9,7 +11,6 @@ def search_query(query):
     url_map = pickle.load( open( "url_map.p", "rb" ) )
     filename_title =[]
 
-    print(*filenames, sep='\n')
     row_normalized_idf_table = normalized_idf_table[1]
     total_docs = len(row_normalized_idf_table[2])
 
@@ -27,15 +28,12 @@ def search_query(query):
 
         filename_title.append(title)
 
-    print(*filename_title, sep='\n')
 
     substring_filenames = []
     for item in filenames:
         fname = item[21:]
         fname = fname[:-4]
         substring_filenames.append(fname)
-
-    print('\n\n\n')
 
     # *************************** INPUTTING THE QUERY ***************************
 
@@ -136,18 +134,57 @@ def search_query(query):
     thefile = open('templates/results.html', 'w')
     thefile.write(upper)
 
-    result_entry = """ <div class="w3-panel w3-container w3-margin-bottom">
+    result_entry = """ 
+                        <div class="w3-panel w3-container w3-margin-bottom">
 		            <div class="w3-container w3-white">
                                 <p><b><a href='%s' target='_blank'>%s</a></b></p>
-			        <p>Summary goes here</p>
 		            </div>
 		        </div>
                     """
-    for i in range(0, len(filtered_results)):
-        item = filtered_results[i]
-        thefile.write(result_entry %(item[0],item[3]))
+
+    #for i in range(0, len(filtered_results)):
+    #    item = filtered_results[i]
+    #    thefile.write(result_entry %(item[0],item[3]))
+    #    if(i == 10):
+    #        break
+
+    proximity_results = []
+
+    for row in filtered_results:
+        fo = open('Crawled_preprocessed/'+row[1]+'.txt', "r")
+        count = 0
+
+        #Reading the file word by word
+        for line in fo:
+            splitted = line.split()
+            for i in range(0, len(splitted)):
+                k_list = []
+                if (splitted[i] in wordList):
+                    for ind in range(k, 0, -1):
+                        k_list.append(splitted[i-ind])
+                    for ind in range(0, k):
+                        k_list.append(splitted[i+ind])
+                if len(k_list) !=0:
+                    print('Here')
+                    print(*k_list, sep=' ')
+                    print(*wordList, sep=' ')
+                    if all(y in k_list for y in wordList):
+                        i = i+7
+                        count = count+1
+        row.append(count)
+        proximity_results.append(row)
+            #for word in line.split():
+                #For each word, checking if its term already exists in the posting list
+                #Word exists in 'term' 
+
+    proximity_results = sorted(proximity_results, key = lambda x: x[4], reverse=True)#Sorting term_data in ascending order according to the word
+    print(*proximity_results, sep='\n')
+
+    for i in range(0, len(proximity_results)):
+        item = proximity_results[i]
+        if(item[4]!=0):
+            thefile.write(result_entry %(item[0],item[3]))
         if(i == 10):
             break
+
     thefile.write(lower)
-
-

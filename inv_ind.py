@@ -15,7 +15,7 @@ class inverted_index:
 
     #Getting the total number of docs
     total_docs=0
-    target_folder = 'Preprocessed/*.txt'
+    target_folder = 'Crawled_preprocessed/*.txt'
     #target_folder = 'Test_Preprocessed/*.txt'
     for filename in glob.glob(target_folder):
         total_docs = total_docs+1
@@ -180,4 +180,3 @@ class inverted_index:
     pickle.dump( normalized_idf_table, open("normalized_idf.p", "wb"))
 
     test_normalized_idf_table = pickle.load( open( "normalized_idf.p", "rb" ) )
-
